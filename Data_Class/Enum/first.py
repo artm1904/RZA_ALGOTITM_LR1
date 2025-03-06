@@ -1,2 +1,2 @@
 print("Hello World!!")
-print("Пока дирректория Data_Class не нужна")
+print("Пока директория Data_Class не нужна")
