@@ -1,0 +1,41 @@
+from dataclasses import dataclass, field
+from typing import Optional
+
+from Artem_Class.Quality import Quality
+from Artem_Class.TimeStamp import TimeStamp
+from Data_Class.Enum.dirEnum import DirEnum
+from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.CompositeComponents.PrimitiveComponents.BasicTypes.BOOLEAN import \
+    BOOLEAN
+
+
+@dataclass
+class ACD:
+
+    """
+    Представляет объект ACD.
+           /**
+    * Directional protection activation information
+    * (Информация об активации направленной защиты)
+    * */
+    /**
+    * Status
+    */
+        """
+    general: Optional[BOOLEAN] = field(default_factory=BOOLEAN)     # general: BOOLEAN
+    dirGeneral: Optional[DirEnum] = None   # dirGeneral: ENUMERATED
+
+    phsA: Optional[BOOLEAN] = field(default_factory=BOOLEAN)         # phSA: BOOLEAN
+    dirPhsA: Optional[DirEnum] = None     # dirPhSA: ENUMERATED
+
+    phsB: Optional[BOOLEAN] = field(default_factory=BOOLEAN)          # phSB: BOOLEAN
+    dirPhsB: Optional[DirEnum] = None     # dirPhSB: ENUMERATED
+
+    phsC: Optional[BOOLEAN] = field(default_factory=BOOLEAN)           # phSC: BOOLEAN
+    dirPhsC: Optional[DirEnum] = None     # dirPhSC: ENUMERATED
+
+    neut: Optional[BOOLEAN] = field(default_factory=BOOLEAN)            # neut: BOOLEAN
+    dirNeut: Optional[DirEnum] = None     # dirNeut: ENUMERATED
+
+    q: Quality = field(default_factory=Quality)          # q: Качество
+    t: TimeStamp = field(default_factory=TimeStamp)      # t: Временная меткаefault_factory=TimeStam
+
