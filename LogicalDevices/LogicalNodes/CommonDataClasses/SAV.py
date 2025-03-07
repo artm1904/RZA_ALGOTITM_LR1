@@ -1,8 +1,8 @@
 from dataclasses import dataclass, field
 
-from Artem_Class.AnalogueValue import AnalogueValue
-from Artem_Class.Quality import Quality
-from Artem_Class.TimeStamp import TimeStamp
+from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.AnalogueValue import AnalogueValue
+from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Quality import Quality
+from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.TimeStamp import TimeStamp
 
 
 @dataclass

@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.CompositeComponents.PrimitiveComponents.BasicTypes.FLOAT32 import \
+from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.BasicTypes.FLOAT32 import \
     FLOAT32
-from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.CompositeComponents.PrimitiveComponents.BasicTypes.INT32 import \
+from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.BasicTypes.INT32 import \
     INT32
 
 

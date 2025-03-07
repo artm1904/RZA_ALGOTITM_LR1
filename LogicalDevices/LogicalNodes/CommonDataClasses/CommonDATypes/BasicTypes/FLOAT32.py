@@ -1,5 +1,6 @@
-import struct
 import math
+import struct
+
 
 class FLOAT32:
     """

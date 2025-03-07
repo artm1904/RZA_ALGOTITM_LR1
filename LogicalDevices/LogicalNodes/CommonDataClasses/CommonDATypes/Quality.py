@@ -1,7 +1,6 @@
 from dataclasses import dataclass, field
-from typing import Optional
 
-from Data_Class.Enum.QualEnum import QualEnum
+from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Enum.QualEnum import QualEnum
 
 
 @dataclass

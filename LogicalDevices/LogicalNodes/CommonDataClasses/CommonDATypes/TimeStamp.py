@@ -1,11 +1,12 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-from Artem_Class.TimeQuality import TimeQuality
-from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.CompositeComponents.PrimitiveComponents.BasicTypes.INT24U import \
+from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.BasicTypes.INT24U import \
     INT24U
-from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.CompositeComponents.PrimitiveComponents.BasicTypes.INT32 import \
+from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.BasicTypes.INT32 import \
     INT32
+from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.TimeQuality import \
+    TimeQuality
 
 
 @dataclass

@@ -1,9 +1,10 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-from Data_Class.Enum.TimeAccuracy import TimeAccuracy
-from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.CompositeComponents.PrimitiveComponents.BasicTypes.BOOLEAN import \
+from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.BasicTypes.BOOLEAN import \
     BOOLEAN
+
+from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Enum.TimeAccuracy import TimeAccuracy
 
 
 @dataclass

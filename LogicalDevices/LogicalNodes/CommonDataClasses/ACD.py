@@ -1,11 +1,10 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-from Artem_Class.Quality import Quality
-from Artem_Class.TimeStamp import TimeStamp
-from Data_Class.Enum.dirEnum import DirEnum
-from LogicalDevices.LogicalNodes.CompositeCommonDataClasses.SimpleCommonDataClasses.CommonDATypes.CompositeComponents.PrimitiveComponents.BasicTypes.BOOLEAN import \
-    BOOLEAN
+from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Quality import Quality
+from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.TimeStamp import TimeStamp
+from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Enum.dirEnum import DirEnum
+from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.BasicTypes.BOOLEAN import BOOLEAN
 
 
 @dataclass
