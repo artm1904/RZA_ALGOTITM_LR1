@@ -4,7 +4,7 @@ class DirEnum(Enum):
     """
     Enum для представления направлений (direction): unknow, forward, backward.
     """
-    UNKNOW = "unknow"  # Обратите внимание на правильное написание "unknow"
+    UNKNOWN = "unknown"  # Обратите внимание на правильное написание "unknow"
     FORWARD = "forward"
     BACKWARD = "backward"
 
@@ -48,21 +48,22 @@ class DirEnum(Enum):
 # if __name__ == "__main__":
 #     direction1 = DirEnum.FORWARD
 #     direction2 = DirEnum.BACKWARD
-#
-#     print(f"direction1: {direction1}")
-#     print(f"direction2: {direction2}")
-#     print(f"Repr(direction1): {repr(direction1)}")
-#
-#     if direction1 == DirEnum.FORWARD:
-#         print("direction1 is FORWARD")
-#
-#     try:
-#         direction3 = DirEnum.from_string("backward")
-#         print(f"direction3: {direction3}")
-#     except ValueError as e:
-#         print(f"Error: {e}")
-#
-#     try:
-#         direction4 = DirEnum.from_string("invalid")
-#     except ValueError as e:
-#         print(f"Error: {e}")
+
+    # print(f"direction1: {direction1}")
+    # print(f"direction2: {direction2}")
+    # print(direction2.value)
+    # print(f"Repr(direction1): {repr(direction1)}")
+    #
+    # if direction1 == DirEnum.FORWARD:
+    #     print("direction1 is FORWARD")
+    #
+    # try:
+    #     direction3 = DirEnum.from_string("backward")
+    #     print(f"direction3: {direction3}")
+    # except ValueError as e:
+    #     print(f"Error: {e}")
+    #
+    # try:
+    #     direction4 = DirEnum.from_string("invalid")
+    # except ValueError as e:
+    #     print(f"Error: {e}")

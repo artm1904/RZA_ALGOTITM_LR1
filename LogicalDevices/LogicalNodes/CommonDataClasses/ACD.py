@@ -21,19 +21,19 @@ class ACD:
     */
         """
     general: Optional[BOOLEAN] = field(default_factory=BOOLEAN)     # general: BOOLEAN
-    dirGeneral: Optional[DirEnum] = None   # dirGeneral: ENUMERATED
+    dirGeneral: Optional[DirEnum] = field(default_factory=DirEnum.value)   # dirGeneral: ENUMERATED
 
     phsA: Optional[BOOLEAN] = field(default_factory=BOOLEAN)         # phSA: BOOLEAN
-    dirPhsA: Optional[DirEnum] = None     # dirPhSA: ENUMERATED
+    dirPhsA: Optional[DirEnum] = field(default_factory=DirEnum.value)     # dirPhSA: ENUMERATED
 
     phsB: Optional[BOOLEAN] = field(default_factory=BOOLEAN)          # phSB: BOOLEAN
-    dirPhsB: Optional[DirEnum] = None     # dirPhSB: ENUMERATED
+    dirPhsB: Optional[DirEnum] = field(default_factory=DirEnum.value)     # dirPhSB: ENUMERATED
 
     phsC: Optional[BOOLEAN] = field(default_factory=BOOLEAN)           # phSC: BOOLEAN
-    dirPhsC: Optional[DirEnum] = None     # dirPhSC: ENUMERATED
+    dirPhsC: Optional[DirEnum] = field(default_factory=DirEnum.value)     # dirPhSC: ENUMERATED
 
     neut: Optional[BOOLEAN] = field(default_factory=BOOLEAN)            # neut: BOOLEAN
-    dirNeut: Optional[DirEnum] = None     # dirNeut: ENUMERATED
+    dirNeut: Optional[DirEnum] = field(default_factory=DirEnum.value)     # dirNeut: ENUMERATED
 
     q: Quality = field(default_factory=Quality)          # q: Качество
     t: TimeStamp = field(default_factory=TimeStamp)      # t: Временная меткаefault_factory=TimeStam
