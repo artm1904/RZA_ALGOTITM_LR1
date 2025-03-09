@@ -15,4 +15,4 @@ class INC:
     stVal: Optional[INT32] = field(default_factory=INT32)  # stVal: Значение статуса (булево)
     q: Quality = field(default_factory=Quality)                  # q: Качество
     t: TimeStamp = field(default_factory=TimeStamp)          # t: Временная меткаefault_factory=TimeStam
-    ctIModel: CtlModels = field(default_factory=CtlModels)
+    ctIModel: CtlModels = field(default_factory=CtlModels.value)
