@@ -6,4 +6,4 @@ from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.AnalogueValue i
 
 @dataclass
 class ASG:
-    setMag: AnalogueValue = field(default_factory=AnalogueValue.i)  # instMag: Мгновенная величина
+    setMag: AnalogueValue = field(default_factory=AnalogueValue)  # instMag: Мгновенная величина
