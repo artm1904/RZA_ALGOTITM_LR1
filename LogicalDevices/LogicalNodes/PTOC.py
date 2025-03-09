@@ -5,6 +5,7 @@ from LogicalDevices.LogicalNodes.CommonDataClasses.ACD import ACD
 from LogicalDevices.LogicalNodes.CommonDataClasses.ACT import ACT
 from LogicalDevices.LogicalNodes.CommonDataClasses.ASG import ASG
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.BasicTypes.BOOLEAN import BOOLEAN
+from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.BasicTypes.INT32 import INT32
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Enum.dirEnum import DirEnum
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Quality import Quality
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.TimeStamp import TimeStamp
@@ -49,7 +50,7 @@ class PTOC(LogicalNodeClass):
                         t=TimeStamp()
                         )
             counter += 1
-            if counter == self.OpDlTmms.setVal.value:
+            if counter >= self.OpDlTmms.setVal.value:
                 self.Op = ACT(
                         general=BOOLEAN(True),
                         phsA=BOOLEAN(StrPhsA),
@@ -59,6 +60,6 @@ class PTOC(LogicalNodeClass):
                         q=Quality(),
                         t=TimeStamp()
                 )
-
-
+        else:
+            counter = 0
 

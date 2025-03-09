@@ -20,4 +20,3 @@ if __name__ == "__main__":
         t=TimeStamp()
     )
 
-    print(acd_экземпляр)

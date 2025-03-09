@@ -16,4 +16,4 @@ class SPC:
     stVal: Optional[BOOLEAN] = field(default_factory=BOOLEAN)  # stVal: Значение статуса (булево)
     q: Quality = field(default_factory=Quality)                             # q: Качество
     t: TimeStamp = field(default_factory=TimeStamp)                        # t: Временная меткаefault_factory=TimeStam
-    ctlModel: Optional[CtlModels] = field(default_factory=CtlModels.value)
+    ctlModel: Optional[CtlModels] = field(default_factory=CtlModels)
