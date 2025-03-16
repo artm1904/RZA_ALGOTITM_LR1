@@ -7,7 +7,6 @@ from LogicalDevices.LogicalNodes.CommonDataClasses.ENS import ENS
 from LogicalDevices.LogicalNodes.CommonDataClasses.LPL import LPL
 
 
-
 @dataclass
 # Создаем абстрактный класс
 class LogicalNodeClass(ABC):

@@ -5,13 +5,13 @@ from LogicalDevices.LogicalNodes.CommonDataClasses.ACD import ACD
 from LogicalDevices.LogicalNodes.CommonDataClasses.ACT import ACT
 from LogicalDevices.LogicalNodes.CommonDataClasses.ASG import ASG
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.BasicTypes.BOOLEAN import BOOLEAN
-from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.BasicTypes.INT32 import INT32
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Enum.dirEnum import DirEnum
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Quality import Quality
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.TimeStamp import TimeStamp
 from LogicalDevices.LogicalNodes.CommonDataClasses.ING import ING
 from LogicalDevices.LogicalNodes.CommonDataClasses.WYE import WYE
 from LogicalDevices.LogicalNodes.LogicalNodeClass import LogicalNodeClass
+
 
 @dataclass
 class PTOC(LogicalNodeClass):

@@ -8,7 +8,7 @@ from LogicalDevices.LogicalNodes.LogicalNodeClass import LogicalNodeClass
 class LSVS(LogicalNodeClass):
 
     def __init__(self):
-        super().__init__()
+        LogicalNodeClass.__init__()
 
     def process(self):
         self.CurrentA = self.InputCurrentA

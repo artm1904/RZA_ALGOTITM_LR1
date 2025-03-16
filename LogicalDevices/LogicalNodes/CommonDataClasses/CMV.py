@@ -1,5 +1,4 @@
 from dataclasses import dataclass, field
-from typing import Optional
 
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Quality import Quality
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.TimeStamp import TimeStamp

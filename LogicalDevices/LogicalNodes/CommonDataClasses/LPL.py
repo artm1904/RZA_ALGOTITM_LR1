@@ -4,7 +4,6 @@ from typing import Optional
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.BasicTypes.VISIBLE_STRING255 import VISIBLE_STRING255
 
 
-
 @dataclass
 class LPL:
     """

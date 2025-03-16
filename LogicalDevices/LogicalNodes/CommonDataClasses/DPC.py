@@ -1,10 +1,10 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
+from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.BasicTypes.BOOLEAN import BOOLEAN
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Enum.QPosEnum import QPosEnum
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Quality import Quality
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.TimeStamp import TimeStamp
-from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.BasicTypes.BOOLEAN import BOOLEAN
 
 
 @dataclass

@@ -4,7 +4,6 @@ from typing import Optional
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.BasicTypes.BOOLEAN import BOOLEAN
 
 
-
 @dataclass
 class ENS:
     """

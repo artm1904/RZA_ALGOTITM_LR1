@@ -1,6 +1,4 @@
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
-from typing import Optional
 
 from LogicalDevices.LogicalNodes.CommonDataClasses.CMV import CMV
 from LogicalDevices.LogicalNodes.CommonDataClasses.MV import MV

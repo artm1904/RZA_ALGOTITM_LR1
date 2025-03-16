@@ -9,7 +9,6 @@ from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Quality import 
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.TimeStamp import TimeStamp
 from LogicalDevices.LogicalNodes.LogicalNodeClass import LogicalNodeClass
 
-
 """
 Логический узел «Общий сигнал срабатывания защит»
 
