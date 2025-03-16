@@ -67,7 +67,7 @@ class PTRC(LogicalNodeClass):
 
 
         StrLoc = (StrPhsA) or (StrPhsB) or (StrPhsC)
-        counter = 0
+
 
         if StrLoc:
             self.Str = ACD(
@@ -84,9 +84,7 @@ class PTRC(LogicalNodeClass):
                 q=Quality(),
                 t=TimeStamp()
             )
-            counter += 1
-            if counter >= self.OpDlTmms.setVal.value:
-                self.Op = ACT(
+            self.Op = ACT(
                     general=BOOLEAN(True),
                     phsA=BOOLEAN(StrPhsA),
                     phsB=BOOLEAN(StrPhsB),
@@ -94,7 +92,4 @@ class PTRC(LogicalNodeClass):
                     neut=BOOLEAN(False),
                     q=Quality(),
                     t=TimeStamp()
-                )
-        else:
-            counter = 0
-
+            )
