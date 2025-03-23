@@ -36,8 +36,8 @@ class CSWI(LogicalNodeClass):
 
     def process(self):
         self.Pos = DPC(
-            # stVal=,
+            stVal = True,
             q=Quality(),
             t=TimeStamp(),
-            # ctlVal=
+            ctlVal= True
         )
