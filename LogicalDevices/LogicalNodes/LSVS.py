@@ -1,14 +1,13 @@
-from dataclasses import field
+from dataclasses import field, dataclass
 from typing import Optional
 
 from LogicalDevices.LogicalNodes.CommonDataClasses.SAV import SAV
 from LogicalDevices.LogicalNodes.LogicalNodeClass import LogicalNodeClass
 
-
+@dataclass
 class LSVS(LogicalNodeClass):
 
-    def __init__(self):
-        LogicalNodeClass.__init__()
+
 
     def process(self):
         self.CurrentA = self.InputCurrentA
@@ -20,8 +19,8 @@ class LSVS(LogicalNodeClass):
     InputCurrentB: Optional[SAV] = field(default_factory=SAV)
     InputCurrentC: Optional[SAV] = field(default_factory=SAV)
 
-    CurrentA: Optional[SAV] = field(default_factory=SAV)
-    CurrentB: Optional[SAV] = field(default_factory=SAV)
-    CurrentC: Optional[SAV] = field(default_factory=SAV)
+    CurrentA: Optional[SAV] = field(init=False, default_factory=SAV) # init=False
+    CurrentB: Optional[SAV] = field(init=False, default_factory=SAV) # init=False
+    CurrentC: Optional[SAV] = field(init=False, default_factory=SAV) # init=False
 
 

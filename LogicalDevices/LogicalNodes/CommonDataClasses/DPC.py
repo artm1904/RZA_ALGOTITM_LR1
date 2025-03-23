@@ -15,8 +15,8 @@ class DPC:
      Controllable double point (Управляемая двойная точка)
     	Status and control mirror
     """
-    stVal: Optional[QPosEnum] = field(default_factory=QPosEnum.value)  # stVal: Значение статуса (булево)
+    stVal: Optional[QPosEnum] = field(default_factory=lambda: QPosEnum("off"))  # stVal: Значение статуса (булево)
 
     q: Quality = field(default_factory=Quality)          # q: Качество
     t: TimeStamp = field(default_factory=TimeStamp)      # t: Временная меткаefault_factory=TimeStam
-    ctlVal: Optional[BOOLEAN] = field(default_factory=BOOLEAN)
+    ctlVal: Optional[BOOLEAN] = field(default_factory=lambda: BOOLEAN(False)) # Если BOOLEAN - класс обертка

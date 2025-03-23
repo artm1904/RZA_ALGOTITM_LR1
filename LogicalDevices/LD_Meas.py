@@ -1,4 +1,4 @@
-from dataclasses import field
+from dataclasses import dataclass, field
 from typing import Optional
 
 from LogicalDevices.LogicalNodes.CommonDataClasses.SAV import SAV
@@ -8,21 +8,30 @@ from LogicalDevices.LogicalNodes.MMXU import MMXU_Fur, MMXU_RMS
 from LogicalDevices.LogicalNodes.TCTR import TCTR
 
 
+@dataclass
 class LDMeasurement_LSVS_Fur:
     """
     Входные данные LD:
      """
-    CurrentA: Optional[SAV] = field(default_factory=SAV)
-    CurrentB: Optional[SAV] = field(default_factory=SAV)
-    CurrentC: Optional[SAV] = field(default_factory=SAV)
+    CurrentA: SAV = field(init=False)
+    CurrentB: SAV = field(init=False)
+    CurrentC: SAV = field(init=False)
 
     """
     Выходные данные LD:
     """
-    A: Optional[WYE] = None
+    A: WYE = field(init=False)
 
-    mmxu = MMXU_Fur()
-    lsvs = LSVS()
+    mmxu: MMXU_Fur = field(init=False)
+    lsvs: LSVS = field(init=False)
+
+    def __post_init__(self):
+        self.mmxu = MMXU_Fur()
+        self.lsvs = LSVS()
+        self.CurrentA = SAV()
+        self.CurrentB = SAV()
+        self.CurrentC = SAV()
+        self.A = WYE()
 
     def process(self):
         self.lsvs.InputCurrentA = self.CurrentA
@@ -36,23 +45,35 @@ class LDMeasurement_LSVS_Fur:
         self.mmxu.process()
         self.A = self.mmxu.A
 
+
+@dataclass
 class LDMeasurement_TCTR_Fur:
     """
     Входные данные LD:
      """
-    CurrentA: Optional[SAV] = field(default_factory=SAV)
-    CurrentB: Optional[SAV] = field(default_factory=SAV)
-    CurrentC: Optional[SAV] = field(default_factory=SAV)
+    CurrentA: SAV = field(init=False)
+    CurrentB: SAV = field(init=False)
+    CurrentC: SAV = field(init=False)
 
     """
     Выходные данные LD:
     """
-    A: Optional[WYE] = None
+    A: WYE = field(init=False)
 
-    mmxu = MMXU_Fur()
-    tctrA = TCTR()
-    tctrB = TCTR()
-    tctrC = TCTR()
+    mmxu: MMXU_Fur = field(init=False)
+    tctrA: TCTR = field(init=False)
+    tctrB: TCTR = field(init=False)
+    tctrC: TCTR = field(init=False)
+
+    def __post_init__(self):
+        self.mmxu = MMXU_Fur()
+        self.tctrA = TCTR()
+        self.tctrB = TCTR()
+        self.tctrC = TCTR()
+        self.CurrentA = SAV()
+        self.CurrentB = SAV()
+        self.CurrentC = SAV()
+        self.A = WYE()
 
     def process(self):
         self.tctrA.InputAmp = self.CurrentA
@@ -68,23 +89,34 @@ class LDMeasurement_TCTR_Fur:
         self.mmxu.CurrentC = self.tctrC.Amp
         self.mmxu.process()
         self.A = self.mmxu.A
+        # print(self.A)
+        # print("from LD Measermentt")
 
 
+@dataclass
 class LDMeasurement_LSVS_RMS:
     """
     Входные данные LD:
      """
-    CurrentA: Optional[SAV] = field(default_factory=SAV)
-    CurrentB: Optional[SAV] = field(default_factory=SAV)
-    CurrentC: Optional[SAV] = field(default_factory=SAV)
+    CurrentA: SAV = field(init=False)
+    CurrentB: SAV = field(init=False)
+    CurrentC: SAV = field(init=False)
 
     """
     Выходные данные LD:
     """
-    A: Optional[WYE] = None
+    A: WYE = field(init=False)
 
-    mmxu = MMXU_RMS()
-    lsvs = LSVS()
+    mmxu: MMXU_RMS = field(init=False)
+    lsvs: LSVS = field(init=False)
+
+    def __post_init__(self):
+        self.mmxu = MMXU_RMS()
+        self.lsvs = LSVS()
+        self.CurrentA = SAV()
+        self.CurrentB = SAV()
+        self.CurrentC = SAV()
+        self.A = WYE()
 
     def process(self):
         self.lsvs.InputCurrentA = self.CurrentA
@@ -99,23 +131,34 @@ class LDMeasurement_LSVS_RMS:
         self.A = self.mmxu.A
 
 
+@dataclass
 class LDMeasurement_TCTR_RMS:
     """
     Входные данные LD:
      """
-    CurrentA: Optional[SAV] = field(default_factory=SAV)
-    CurrentB: Optional[SAV] = field(default_factory=SAV)
-    CurrentC: Optional[SAV] = field(default_factory=SAV)
+    CurrentA: SAV = field(init=False)
+    CurrentB: SAV = field(init=False)
+    CurrentC: SAV = field(init=False)
 
     """
     Выходные данные LD:
     """
-    A: Optional[WYE] = None
+    A: WYE = field(init=False)
 
-    mmxu = MMXU_RMS()
-    tctrA = TCTR()
-    tctrB = TCTR()
-    tctrC = TCTR()
+    mmxu: MMXU_RMS = field(init=False)
+    tctrA: TCTR = field(init=False)
+    tctrB: TCTR = field(init=False)
+    tctrC: TCTR = field(init=False)
+
+    def __post_init__(self):
+        self.mmxu = MMXU_RMS()
+        self.tctrA = TCTR()
+        self.tctrB = TCTR()
+        self.tctrC = TCTR()
+        self.CurrentA = SAV()
+        self.CurrentB = SAV()
+        self.CurrentC = SAV()
+        self.A = WYE()
 
     def process(self):
         self.tctrA.InputAmp = self.CurrentA

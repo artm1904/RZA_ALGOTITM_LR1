@@ -32,3 +32,8 @@ class XCBR(LogicalNodeClass):
 
     """ Входные данные """
     Pos: Optional[DPC] = field(default_factory=DPC)
+
+    def process(self):
+        pass
+
+

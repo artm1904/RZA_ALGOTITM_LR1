@@ -10,5 +10,9 @@ class AnalogueValue:
     """
     Представляет аналоговое значение, содержащее INT32 и FLOAT32 представления.
     """
-    i: Optional[INT32] = field(default_factory=INT32)    # i: INT32
-    f: Optional[FLOAT32] = field(default_factory=FLOAT32)  # f: FLOAT32
+    i: Optional[INT32] = field(init=False)    # i: INT32
+    f: Optional[FLOAT32] = field(init=False)  # f: FLOAT32
+
+    def __post_init__(self):
+        self.i = INT32(0)
+        self.f = FLOAT32(0.0)

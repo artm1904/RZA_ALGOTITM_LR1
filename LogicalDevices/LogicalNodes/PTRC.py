@@ -18,16 +18,6 @@ from LogicalDevices.LogicalNodes.LogicalNodeClass import LogicalNodeClass
 Функции, моделируемые логическим узлом PTRC:
 1) Режим работы логического узла;
 2) Пуск и срабатывание функции.
-
-
-Op - Срабатывать (тип атрибута ACT класса общих данных) — означает решение функции защиты (логического узла) об отключении.
-Команда на отключение выдается в узле PTRC
-
-Узел PTRC используется для того, чтобы соединять и поддерживать состояние различных
-сигналов, направленных на отключение, в единое состояние отключения.
-
-Все сигналы срабатывания, идущие от узлов защиты, объединяются в команду на отключение в узле PTRC.
-Узел PTRC контролирует создание условий для сигнала отключения (минимальная продолжительность команды на отключение, однополюсный/трехполюсный вариант и т. п.).
 """
 
 @dataclass
@@ -35,33 +25,42 @@ class PTRC(LogicalNodeClass):
     """
         Входные данные узла:
          """
-    Str1: Optional[ACD] = field(default_factory=ACD)
-    Str2: Optional[ACD] = field(default_factory=ACD)
-    Str3: Optional[ACD] = field(default_factory=ACD)
+    Str1: ACD = field(init=False)
+    Str2: ACD = field(init=False)
+    Str3: ACD = field(init=False)
 
-    Op1: Optional[ACT] = field(default_factory=ACT)
-    Op2: Optional[ACT] = field(default_factory=ACT)
-    Op3: Optional[ACT] = field(default_factory=ACT)
+    Op1: ACT = field(init=False)
+    Op2: ACT = field(init=False)
+    Op3: ACT = field(init=False)
 
     """
         Выходные данные узла:
-        """
-    Str: Optional[ACD] = None
-    Op: Optional[ACT] = None
+         """
+    Str: ACD = field(init=False)
+    Op: ACT = field(init=False)
 
-
-    def __init__(self):
-        super().__init__()
+    def __post_init__(self):
+        self.Str1 = ACD()
+        self.Str2 = ACD()
+        self.Str3 = ACD()
+        self.Op1 = ACT()
+        self.Op2 = ACT()
+        self.Op3 = ACT()
+        self.Str = ACD()
+        self.Op = ACT()
 
     def process(self):
+        StrPhsA = False
+        StrPhsB = False
+        StrPhsC = False
 
-        if ( (self.Op1.phsA) or (self.Op2.phsA) or (self.Op3.phsA)):
+        if ( (self.Op1.phsA.value) or (self.Op2.phsA.value) or (self.Op3.phsA.value)):
             StrPhsA = True
 
-        if ( (self.Op1.phsB) or (self.Op2.phsB) or (self.Op3.phsB)):
+        if ( (self.Op1.phsB.value) or (self.Op2.phsB.value) or (self.Op3.phsB.value)):
             StrPhsB = True
 
-        if ( (self.Op1.phsC) or (self.Op2.phsC) or (self.Op3.phsC)):
+        if ( (self.Op1.phsC.value) or (self.Op2.phsC.value) or (self.Op3.phsC.value)):
             StrPhsC = True
 
 
@@ -69,26 +68,26 @@ class PTRC(LogicalNodeClass):
 
 
         if StrLoc:
-            self.Str = ACD(
-                general=BOOLEAN(True),
-                phsA=BOOLEAN(StrPhsA),
-                phsB=BOOLEAN(StrPhsB),
-                phsC=BOOLEAN(StrPhsC),
-                neut=BOOLEAN(False),
-                dirGeneral=DirEnum.UNKNOWN,
-                dirPhsA=DirEnum.UNKNOWN,
-                dirPhsB=DirEnum.UNKNOWN,
-                dirPhsC=DirEnum.UNKNOWN,
-                dirNeut=DirEnum.UNKNOWN,
-                q=Quality(),
-                t=TimeStamp()
-            )
-            self.Op = ACT(
-                    general=BOOLEAN(True),
-                    phsA=BOOLEAN(StrPhsA),
-                    phsB=BOOLEAN(StrPhsB),
-                    phsC=BOOLEAN(StrPhsC),
-                    neut=BOOLEAN(False),
-                    q=Quality(),
-                    t=TimeStamp()
-            )
+            self.Str = ACD()
+            self.Str.general = BOOLEAN(True)
+            self.Str.phsA = BOOLEAN(StrPhsA)
+            self.Str.phsB = BOOLEAN(StrPhsB)
+            self.Str.phsC = BOOLEAN(StrPhsC)
+            self.Str.neut = BOOLEAN(False)
+            self.Str.dirGeneral = DirEnum.UNKNOWN
+            self.Str.dirPhsA = DirEnum.UNKNOWN
+            self.Str.dirPhsB = DirEnum.UNKNOWN
+            self.Str.dirPhsC = DirEnum.UNKNOWN
+            self.Str.dirNeut = DirEnum.UNKNOWN
+            self.Str.q = Quality()
+            self.Str.t = TimeStamp()
+
+
+            self.Op = ACT()
+            self.Op.general = BOOLEAN(True)
+            self.Op.phsA = BOOLEAN(StrPhsA)
+            self.Op.phsB = BOOLEAN(StrPhsB)
+            self.Op.phsC = BOOLEAN(StrPhsC)
+            self.Op.neut = BOOLEAN(False)
+            self.Op.q = Quality()
+            self.Op.t = TimeStamp()

@@ -1,4 +1,4 @@
-from dataclasses import field
+from dataclasses import dataclass, field
 from typing import Optional
 
 from LogicalDevices.LogicalNodes.CommonDataClasses.ACT import ACT
@@ -8,31 +8,48 @@ from LogicalDevices.LogicalNodes.CommonDataClasses.WYE import WYE
 from LogicalDevices.LogicalNodes.PTOC import PTOC
 from LogicalDevices.LogicalNodes.PTRC import PTRC
 
-
+@dataclass
 class LDProt_MTZ:
 
     """ Входные данные LD """
-    A: Optional[WYE] = field(default_factory=WYE)
+    A: WYE = field(init=False)
 
-    StrVal_stg1: Optional[ASG] = field(default_factory=ASG)
-    StrVal_stg2: Optional[ASG] = field(default_factory=ASG)
-    StrVal_stg3: Optional[ASG] = field(default_factory=ASG)
+    StrVal_stg1: ASG = field(init=False)
+    StrVal_stg2: ASG = field(init=False)
+    StrVal_stg3: ASG = field(init=False)
 
-    OPDlTmms_stg1: Optional[ING] = field(default_factory=ING)
-    OPDlTmms_stg2: Optional[ING] = field(default_factory=ING)
-    OPDlTmms_stg3: Optional[ING] = field(default_factory=ING)
+    OPDlTmms_stg1: ING = field(init=False)
+    OPDlTmms_stg2: ING = field(init=False)
+    OPDlTmms_stg3: ING = field(init=False)
 
     """ Выходные данные LD """
-    Op: Optional[ACT] = None
+    Op: ACT = field(init=False)
 
     """ Экземпляры LN """
-    ptoc1 = PTOC()
-    ptoc2 = PTOC()
-    ptoc3 = PTOC()
-    ptrc = PTRC()
+    ptoc1: PTOC = field(init=False)
+    ptoc2: PTOC = field(init=False)
+    ptoc3: PTOC = field(init=False)
+    ptrc: PTRC = field(init=False)
 
+    def __post_init__(self):
+        self.A = WYE()
+        self.StrVal_stg1 = ASG()
+        self.StrVal_stg2 = ASG()
+        self.StrVal_stg3 = ASG()
+        self.OPDlTmms_stg1 = ING()
+        self.OPDlTmms_stg2 = ING()
+        self.OPDlTmms_stg3 = ING()
+        self.Op = ACT()
+        self.ptoc1 = PTOC()
+        self.ptoc2 = PTOC()
+        self.ptoc3 = PTOC()
+        self.ptrc = PTRC()
 
     def process(self):
+
+
+        # print(self.A)
+        # print("from LD PRotection")
 
         # Передача значения уставок
         self.ptoc1.StrVal = self.StrVal_stg1
@@ -67,6 +84,3 @@ class LDProt_MTZ:
 
         # Передача выходного сигнала срабатывания защит
         self.Op = self.ptrc.Op
-
-
-

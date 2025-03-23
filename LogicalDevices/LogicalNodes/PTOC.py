@@ -15,51 +15,56 @@ from LogicalDevices.LogicalNodes.LogicalNodeClass import LogicalNodeClass
 
 @dataclass
 class PTOC(LogicalNodeClass):
+    A: WYE = field(init=False)
 
-    A: Optional[WYE] = field(default_factory=WYE)
+    StrVal: ASG = field(init=False)
+    OpDlTmms: ING = field(init=False)
 
-    StrVal: Optional[ASG] = field(default_factory=ASG)
-    OpDlTmms: Optional[ING] = field(default_factory=ING)
+    Str: ACD = field(init=False)
+    Op: ACT = field(init=False)
+    counter = 0
 
-    Str: Optional[ACD] = None
-    Op: Optional[ACT] = None
-
-    def __init__(self):
-        super().__init__()
+    def __post_init__(self):
+        self.A = WYE()
+        self.StrVal = ASG()
+        self.OpDlTmms = ING()
+        self.Str = ACD()
+        self.Op = ACT()
 
     def process(self):
-        StrPhsA = self.A.phsA.cVal.mag.i.value >= self.StrVal.setMag.i.value
-        StrPhsB = self.A.phsB.cVal.mag.i.value >= self.StrVal.setMag.i.value
-        StrPhsC = self.A.phsC.cVal.mag.i.value >= self.StrVal.setMag.i.value
+        StrPhsA = self.A.phsA.cVal.mag.f.value >= self.StrVal.setMag.f.value
+        StrPhsB = self.A.phsB.cVal.mag.f.value >= self.StrVal.setMag.f.value
+        StrPhsC = self.A.phsC.cVal.mag.f.value >= self.StrVal.setMag.f.value
         StrLoc = (StrPhsA) or (StrPhsB) or (StrPhsC)
-        counter = 0
+
+        print("--------------------------------")
+        print(self.A.phsA.cVal.mag.f.value)
+        print(self.A.phsB.cVal.mag.f.value)
+        print(self.A.phsC.cVal.mag.f.value)
+        print(self.counter)
+        print("--------------------------------")
 
         if StrLoc:
-            self.Str = ACD(
-                        general=BOOLEAN(True),
-                        phsA=BOOLEAN(StrPhsA),
-                        phsB=BOOLEAN(StrPhsB),
-                        phsC=BOOLEAN(StrPhsC),
-                        neut=BOOLEAN(False),
-                        dirGeneral=DirEnum.UNKNOWN,
-                        dirPhsA=DirEnum.UNKNOWN,
-                        dirPhsB=DirEnum.UNKNOWN,
-                        dirPhsC=DirEnum.UNKNOWN,
-                        dirNeut=DirEnum.UNKNOWN,
-                        q=Quality(),
-                        t=TimeStamp()
-                        )
-            counter += 1
-            if counter >= self.OpDlTmms.setVal.value:
-                self.Op = ACT(
-                        general=BOOLEAN(True),
-                        phsA=BOOLEAN(StrPhsA),
-                        phsB=BOOLEAN(StrPhsB),
-                        phsC=BOOLEAN(StrPhsC),
-                        neut=BOOLEAN(False),
-                        q=Quality(),
-                        t=TimeStamp()
-                )
+            self.Str.general = BOOLEAN(True)
+            self.Str.phsA = BOOLEAN(StrPhsA)
+            self.Str.phsB = BOOLEAN(StrPhsB)
+            self.Str.phsC = BOOLEAN(StrPhsC)
+            self.Str.neut = BOOLEAN(False)
+            self.Str.dirGeneral = DirEnum.UNKNOWN
+            self.Str.dirPhsA = DirEnum.UNKNOWN
+            self.Str.dirPhsB = DirEnum.UNKNOWN
+            self.Str.dirPhsC = DirEnum.UNKNOWN
+            self.Str.dirNeut = DirEnum.UNKNOWN
+            self.Str.q = Quality()
+            self.Str.t = TimeStamp()
+            self.counter += 1
+            if self.counter >= self.OpDlTmms.setVal.value:
+                self.Op.general = BOOLEAN(True)
+                self.Op.phsA = BOOLEAN(StrPhsA)
+                self.Op.phsB = BOOLEAN(StrPhsB)
+                self.Op.phsC = BOOLEAN(StrPhsC)
+                self.Op.neut = BOOLEAN(False)
+                self.Op.q = Quality()
+                self.Op.t = TimeStamp()
         else:
-            counter = 0
-
+            self.counter = 0

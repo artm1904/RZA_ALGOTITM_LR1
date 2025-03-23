@@ -6,35 +6,29 @@ from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Enum.dirEnum im
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.Quality import Quality
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.TimeStamp import TimeStamp
 
-
 @dataclass
 class ACD:
-
     """
     Представляет объект ACD.
-           /**
-    * Directional protection activation information
-    * (Информация об активации направленной защиты)
-    * */
-    /**
-    * Status
-    */
-        """
-    general: Optional[BOOLEAN] = field(default_factory=BOOLEAN)     # general: BOOLEAN
-    dirGeneral: Optional[DirEnum] = field(default_factory=DirEnum)   # dirGeneral: ENUMERATED
+    """
+    general: BOOLEAN = field(init=False)
+    dirGeneral: DirEnum = field(default=DirEnum.UNKNOWN, init=False)
+    phsA: BOOLEAN = field(init=False)
+    dirPhsA: DirEnum = field(default=DirEnum.UNKNOWN, init=False)
+    phsB: BOOLEAN = field(init=False)
+    dirPhsB: DirEnum = field(default=DirEnum.UNKNOWN, init=False)
+    phsC: BOOLEAN = field(init=False)
+    dirPhsC: DirEnum = field(default=DirEnum.UNKNOWN, init=False)
+    neut: BOOLEAN = field(init=False)
+    dirNeut: DirEnum = field(default=DirEnum.UNKNOWN, init=False)
+    q: Quality = field(init=False)
+    t: TimeStamp = field(init=False)
 
-    phsA: Optional[BOOLEAN] = field(default_factory=BOOLEAN)         # phSA: BOOLEAN
-    dirPhsA: Optional[DirEnum] = field(default_factory=DirEnum)     # dirPhSA: ENUMERATED
-
-    phsB: Optional[BOOLEAN] = field(default_factory=BOOLEAN)          # phSB: BOOLEAN
-    dirPhsB: Optional[DirEnum] = field(default_factory=DirEnum)     # dirPhSB: ENUMERATED
-
-    phsC: Optional[BOOLEAN] = field(default_factory=BOOLEAN)           # phSC: BOOLEAN
-    dirPhsC: Optional[DirEnum] = field(default_factory=DirEnum)     # dirPhSC: ENUMERATED
-
-    neut: Optional[BOOLEAN] = field(default_factory=BOOLEAN)            # neut: BOOLEAN
-    dirNeut: Optional[DirEnum] = field(default_factory=DirEnum)     # dirNeut: ENUMERATED
-
-    q: Quality = field(default_factory=Quality)          # q: Качество
-    t: TimeStamp = field(default_factory=TimeStamp)      # t: Временная меткаefault_factory=TimeStam
-
+    def __post_init__(self):
+        self.general = BOOLEAN(False)
+        self.phsA = BOOLEAN(False)
+        self.phsB = BOOLEAN(False)
+        self.phsC = BOOLEAN(False)
+        self.neut = BOOLEAN(False)
+        self.q = Quality()
+        self.t = TimeStamp()

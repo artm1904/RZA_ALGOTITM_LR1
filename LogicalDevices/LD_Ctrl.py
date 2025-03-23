@@ -7,7 +7,7 @@ from LogicalDevices.LogicalNodes.CommonDataClasses.DPC import DPC
 from LogicalDevices.LogicalNodes.XCBR import XCBR
 
 
-class LDMeasurement_LSVS_Fur:
+class LDCtrl:
     """
     Входные данные LD:
      """

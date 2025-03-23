@@ -1,22 +1,17 @@
-from dataclasses import field
+from dataclasses import dataclass, field
 from typing import Optional
 
-from LogicalDevices.LogicalNodes.CommonDataClasses.INS import INS
 from LogicalDevices.LogicalNodes.CommonDataClasses.SAV import SAV
 from LogicalDevices.LogicalNodes.LogicalNodeClass import LogicalNodeClass
 
-
+@dataclass
 class TCTR(LogicalNodeClass):
+    InputAmp: SAV = field(init=False) #Инициализируем в __post_init__
+    Amp: Optional[SAV] = field(init=False, default=None) #Инициализируем в __post_init__
 
-    InputAmp: Optional[SAV] = field(default_factory=SAV)
-    Amp: Optional[SAV] = None             # Amp: SAV
-
-
-
-    def __init__(self):
-        LogicalNodeClass.__init__(self)
+    def __post_init__(self):
+        self.InputAmp = SAV() # Создаем экземпляр SAV
+        self.Amp = SAV()
 
     def process(self):
         self.Amp = self.InputAmp
-
-

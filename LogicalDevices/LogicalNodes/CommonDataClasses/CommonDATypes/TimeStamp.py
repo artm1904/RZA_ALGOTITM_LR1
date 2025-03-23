@@ -5,12 +5,16 @@ from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.BasicTypes.INT2
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.BasicTypes.INT32 import INT32
 from LogicalDevices.LogicalNodes.CommonDataClasses.CommonDATypes.TimeQuality import TimeQuality
 
-
 @dataclass
 class TimeStamp:
     """
     Представляет временную метку.
     """
-    SecondSinceEpoch: Optional[INT32] = field(default_factory=INT32)  # SecondSinceEpoch: INT32
-    FractionOfSecond: Optional[INT24U] = field(default_factory=INT24U)  # FractionOfSecond: INT24U
-    TimeQuality: Optional[TimeQuality] = field(default_factory=TimeQuality)    # TimeQuality: TimeQuality,
+    SecondSinceEpoch: INT32 = field(init=False)
+    FractionOfSecond: INT24U = field(init=False)
+    TimeQuality: TimeQuality = field(init=False)
+
+    def __post_init__(self):
+        self.SecondSinceEpoch = INT32(0)
+        self.FractionOfSecond = INT24U(0)
+        self.TimeQuality = TimeQuality()
