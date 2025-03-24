@@ -37,13 +37,6 @@ class PTOC(LogicalNodeClass):
         StrPhsC = self.A.phsC.cVal.mag.f.value >= self.StrVal.setMag.f.value
         StrLoc = (StrPhsA) or (StrPhsB) or (StrPhsC)
 
-        print("--------------------------------")
-        print(self.A.phsA.cVal.mag.f.value)
-        print(self.A.phsB.cVal.mag.f.value)
-        print(self.A.phsC.cVal.mag.f.value)
-        print(self.counter)
-        print("--------------------------------")
-
         if StrLoc:
             self.Str.general = BOOLEAN(True)
             self.Str.phsA = BOOLEAN(StrPhsA)

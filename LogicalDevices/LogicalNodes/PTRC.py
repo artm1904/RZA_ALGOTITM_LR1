@@ -50,44 +50,37 @@ class PTRC(LogicalNodeClass):
         self.Op = ACT()
 
     def process(self):
-        StrPhsA = False
-        StrPhsB = False
-        StrPhsC = False
-
-        if ( (self.Op1.phsA.value) or (self.Op2.phsA.value) or (self.Op3.phsA.value)):
-            StrPhsA = True
-
-        if ( (self.Op1.phsB.value) or (self.Op2.phsB.value) or (self.Op3.phsB.value)):
-            StrPhsB = True
-
-        if ( (self.Op1.phsC.value) or (self.Op2.phsC.value) or (self.Op3.phsC.value)):
-            StrPhsC = True
-
+        StrPhsA = (self.Str1.phsA.value) or (self.Str2.phsA.value) or (self.Str3.phsA.value)
+        StrPhsB = (self.Str1.phsB.value) or (self.Str2.phsB.value) or (self.Str3.phsB.value)
+        StrPhsC = (self.Str1.phsC.value) or (self.Str2.phsC.value) or (self.Str3.phsC.value)
 
         StrLoc = (StrPhsA) or (StrPhsB) or (StrPhsC)
 
+        self.Str = ACD()
+        self.Str.general = BOOLEAN(StrLoc)
+        self.Str.phsA = BOOLEAN(StrPhsA)
+        self.Str.phsB = BOOLEAN(StrPhsB)
+        self.Str.phsC = BOOLEAN(StrPhsC)
+        self.Str.neut = BOOLEAN(False)
+        self.Str.dirGeneral = DirEnum.UNKNOWN
+        self.Str.dirPhsA = DirEnum.UNKNOWN
+        self.Str.dirPhsB = DirEnum.UNKNOWN
+        self.Str.dirPhsC = DirEnum.UNKNOWN
+        self.Str.dirNeut = DirEnum.UNKNOWN
+        self.Str.q = Quality()
+        self.Str.t = TimeStamp()
 
-        if StrLoc:
-            self.Str = ACD()
-            self.Str.general = BOOLEAN(True)
-            self.Str.phsA = BOOLEAN(StrPhsA)
-            self.Str.phsB = BOOLEAN(StrPhsB)
-            self.Str.phsC = BOOLEAN(StrPhsC)
-            self.Str.neut = BOOLEAN(False)
-            self.Str.dirGeneral = DirEnum.UNKNOWN
-            self.Str.dirPhsA = DirEnum.UNKNOWN
-            self.Str.dirPhsB = DirEnum.UNKNOWN
-            self.Str.dirPhsC = DirEnum.UNKNOWN
-            self.Str.dirNeut = DirEnum.UNKNOWN
-            self.Str.q = Quality()
-            self.Str.t = TimeStamp()
+        OpPhsA = (self.Op1.phsA.value) or (self.Op2.phsA.value) or (self.Op3.phsA.value)
+        OpPhsB = (self.Op1.phsB.value) or (self.Op2.phsB.value) or (self.Op3.phsB.value)
+        OpPhsC = (self.Op1.phsC.value) or (self.Op2.phsC.value) or (self.Op3.phsC.value)
 
+        OpLoc = (OpPhsA) or (OpPhsB) or (OpPhsC)
 
-            self.Op = ACT()
-            self.Op.general = BOOLEAN(True)
-            self.Op.phsA = BOOLEAN(StrPhsA)
-            self.Op.phsB = BOOLEAN(StrPhsB)
-            self.Op.phsC = BOOLEAN(StrPhsC)
-            self.Op.neut = BOOLEAN(False)
-            self.Op.q = Quality()
-            self.Op.t = TimeStamp()
+        self.Op = ACT()
+        self.Op.general = BOOLEAN(OpLoc)
+        self.Op.phsA = BOOLEAN(OpPhsA)
+        self.Op.phsB = BOOLEAN(OpPhsB)
+        self.Op.phsC = BOOLEAN(OpPhsC)
+        self.Op.neut = BOOLEAN(False)
+        self.Op.q = Quality()
+        self.Op.t = TimeStamp()

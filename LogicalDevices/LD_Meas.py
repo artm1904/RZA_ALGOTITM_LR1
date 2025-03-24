@@ -1,5 +1,5 @@
+from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Optional
 
 from LogicalDevices.LogicalNodes.CommonDataClasses.SAV import SAV
 from LogicalDevices.LogicalNodes.CommonDataClasses.WYE import WYE
@@ -7,12 +7,11 @@ from LogicalDevices.LogicalNodes.LSVS import LSVS
 from LogicalDevices.LogicalNodes.MMXU import MMXU_Fur, MMXU_RMS
 from LogicalDevices.LogicalNodes.TCTR import TCTR
 
-
-@dataclass
-class LDMeasurement_LSVS_Fur:
+# Абсстрактный класс используется в качестве интерфейса
+class LD_Meas(ABC):
     """
-    Входные данные LD:
-     """
+        Входные данные LD:
+         """
     CurrentA: SAV = field(init=False)
     CurrentB: SAV = field(init=False)
     CurrentC: SAV = field(init=False)
@@ -21,6 +20,13 @@ class LDMeasurement_LSVS_Fur:
     Выходные данные LD:
     """
     A: WYE = field(init=False)
+
+    @abstractmethod
+    def process(self):
+        pass
+
+@dataclass
+class LDMeasurement_LSVS_Fur(LD_Meas):
 
     mmxu: MMXU_Fur = field(init=False)
     lsvs: LSVS = field(init=False)
@@ -47,19 +53,7 @@ class LDMeasurement_LSVS_Fur:
 
 
 @dataclass
-class LDMeasurement_TCTR_Fur:
-    """
-    Входные данные LD:
-     """
-    CurrentA: SAV = field(init=False)
-    CurrentB: SAV = field(init=False)
-    CurrentC: SAV = field(init=False)
-
-    """
-    Выходные данные LD:
-    """
-    A: WYE = field(init=False)
-
+class LDMeasurement_TCTR_Fur(LD_Meas):
     mmxu: MMXU_Fur = field(init=False)
     tctrA: TCTR = field(init=False)
     tctrB: TCTR = field(init=False)
@@ -89,24 +83,11 @@ class LDMeasurement_TCTR_Fur:
         self.mmxu.CurrentC = self.tctrC.Amp
         self.mmxu.process()
         self.A = self.mmxu.A
-        # print(self.A)
-        # print("from LD Measermentt")
+
 
 
 @dataclass
-class LDMeasurement_LSVS_RMS:
-    """
-    Входные данные LD:
-     """
-    CurrentA: SAV = field(init=False)
-    CurrentB: SAV = field(init=False)
-    CurrentC: SAV = field(init=False)
-
-    """
-    Выходные данные LD:
-    """
-    A: WYE = field(init=False)
-
+class LDMeasurement_LSVS_RMS(LD_Meas):
     mmxu: MMXU_RMS = field(init=False)
     lsvs: LSVS = field(init=False)
 
@@ -132,18 +113,7 @@ class LDMeasurement_LSVS_RMS:
 
 
 @dataclass
-class LDMeasurement_TCTR_RMS:
-    """
-    Входные данные LD:
-     """
-    CurrentA: SAV = field(init=False)
-    CurrentB: SAV = field(init=False)
-    CurrentC: SAV = field(init=False)
-
-    """
-    Выходные данные LD:
-    """
-    A: WYE = field(init=False)
+class LDMeasurement_TCTR_RMS(LD_Meas):
 
     mmxu: MMXU_RMS = field(init=False)
     tctrA: TCTR = field(init=False)

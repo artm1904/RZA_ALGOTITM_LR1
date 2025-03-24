@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
+from LogicalDevices.LogicalNodes.CommonDataClasses.ACD import ACD
 from LogicalDevices.LogicalNodes.CommonDataClasses.ACT import ACT
 from LogicalDevices.LogicalNodes.CommonDataClasses.ASG import ASG
 from LogicalDevices.LogicalNodes.CommonDataClasses.ING import ING
@@ -24,6 +25,7 @@ class LDProt_MTZ:
 
     """ Выходные данные LD """
     Op: ACT = field(init=False)
+    Str: ACD = field(init=False)
 
     """ Экземпляры LN """
     ptoc1: PTOC = field(init=False)
@@ -45,11 +47,9 @@ class LDProt_MTZ:
         self.ptoc3 = PTOC()
         self.ptrc = PTRC()
 
+
+
     def process(self):
-
-
-        # print(self.A)
-        # print("from LD PRotection")
 
         # Передача значения уставок
         self.ptoc1.StrVal = self.StrVal_stg1
@@ -84,3 +84,4 @@ class LDProt_MTZ:
 
         # Передача выходного сигнала срабатывания защит
         self.Op = self.ptrc.Op
+        self.Str = self.ptrc.Str
