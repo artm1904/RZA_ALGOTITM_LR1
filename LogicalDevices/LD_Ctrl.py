@@ -18,6 +18,9 @@ class LDCtrl:
     """
     Pos: Optional[DPC] = None
 
+    """
+        Логические узлы LN:
+    """
     cswi = CSWI()
     xcbr = XCBR()
 

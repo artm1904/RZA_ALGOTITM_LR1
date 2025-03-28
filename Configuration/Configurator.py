@@ -70,7 +70,7 @@ class LB1:
         ld_prot.OPDlTmms_stg2 = mtz2_t
 
         mtz3_t = ING()
-        mtz3_t.setVal = INT32(self.stg2Time)
+        mtz3_t.setVal = INT32(self.stg3Time)
         ld_prot.OPDlTmms_stg3 = mtz3_t
 
         # Инициализация отображаемых массивов

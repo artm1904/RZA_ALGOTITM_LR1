@@ -56,7 +56,7 @@ class LDProt_MTZ:
         self.ptoc2.StrVal = self.StrVal_stg2
         self.ptoc3.StrVal = self.StrVal_stg3
 
-        # Передача значения времени
+        # Передача значения уставок по времени
         self.ptoc1.OpDlTmms = self.OPDlTmms_stg1
         self.ptoc2.OpDlTmms = self.OPDlTmms_stg2
         self.ptoc3.OpDlTmms = self.OPDlTmms_stg3
